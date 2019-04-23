@@ -35,7 +35,7 @@ public class GameForm {
 	 */
 	public void initGame() {
 		while (curTrial < totalTrial) {
-			gamePlay.race();
+			gamePlay.race(curTrial);
 			curTrial = curTrial + 1;
 		}
 	}

@@ -30,7 +30,8 @@ public class GamePlayer {
 	 * 각 자동차가 전진 혹은 정지할지 정하고 움직이는 메소드
 	 * 생성해놓은 자동차 객체의 위치를 변경
 	 */
-	public void race() {
+	public void race(int curTrial) {
+		this.curTrial = curTrial;
 		for (Car curCar : carList) {
 			int key = (int) (Math.random() * 9);
 			if (key > 3) {
@@ -38,7 +39,6 @@ public class GamePlayer {
 			}
 		}
 		printResult(carList);
-		curTrial = curTrial + 1;
 	}
 
 	/**
@@ -50,10 +50,10 @@ public class GamePlayer {
 	private void printResult(ArrayList<Car> carList) {
 		System.out.println();
 		if (curTrial == 0)
-			Printer.print(Msgs.ShowGameResult.getMsg());
+			Printer.println(Msgs.ShowGameResult.getMsg());
 		for (Car curCar : carList) {
 			Printer.print(curCar.getName() + " : ");
-			Printer.print(StringUtils.repeat("-", curCar.getPosition()));
+			Printer.println(StringUtils.repeat("-", curCar.getPosition()));
 		}
 	}
 

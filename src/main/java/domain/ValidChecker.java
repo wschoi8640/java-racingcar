@@ -18,9 +18,8 @@ public class ValidChecker {
 		boolean isValid = true;
 		for (String carName : carNameArr) {
 			if ((carName.length() > 5) || carName.equals("")) {
-				Printer.print(Msgs.CarNameLengthErr.getMsg());
+				Printer.println(Msgs.CarNameLengthErr.getMsg());
 				isValid = false;
-				Printer.print(carName);
 				return isValid;
 			}
 		}
@@ -37,7 +36,7 @@ public class ValidChecker {
 	public static boolean isValidCarNum(String[] carNameArr) {
 		boolean isValid = true;
 		if(carNameArr.length < 2) {
-			Printer.print(Msgs.NotEnoughCarErr.getMsg());
+			Printer.println(Msgs.NotEnoughCarErr.getMsg());
 			isValid = false;
 			return isValid;
 		}
