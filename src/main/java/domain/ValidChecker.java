@@ -1,5 +1,11 @@
 package domain;
 
+/**
+ * 유효성 검사를 목적으로 하는 클래스
+ * 
+ * @author wschoi8640
+ * @version 1.0
+ */
 public class ValidChecker {
 	
 	/**
@@ -12,8 +18,9 @@ public class ValidChecker {
 		boolean isValid = true;
 		for (String carName : carNameArr) {
 			if ((carName.length() > 5) || carName.equals("")) {
-				fixAndPrint(Msgs.CarNameLengthErr.getMsg());
+				Printer.println(Msgs.CarNameLengthErr.getMsg());
 				isValid = false;
+				return isValid;
 			}
 		}
 		return isValid;
@@ -29,13 +36,10 @@ public class ValidChecker {
 	public static boolean isValidCarNum(String[] carNameArr) {
 		boolean isValid = true;
 		if(carNameArr.length < 2) {
-			fixAndPrint(Msgs.NotEnoughCarErr.getMsg());
+			Printer.println(Msgs.NotEnoughCarErr.getMsg());
 			isValid = false;
+			return isValid;
 		}
 		return isValid;
-	}
-	
-	public static void fixAndPrint(String msg) {
-		System.out.println(msg);
 	}
 }
