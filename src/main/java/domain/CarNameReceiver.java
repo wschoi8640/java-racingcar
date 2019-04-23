@@ -6,12 +6,10 @@ import java.util.Scanner;
  * 자동차들의 이름들을 입력받는 클래스
  * 
  * @author wschoi8640
- * @version 1.1
+ * @version 1.2
  */
 public class CarNameReceiver {
 
-	private static final String msg = "경주할 자동차 이름을 입력하세요. (이름은 쉼표 (,)로 구분)";
-	private static final String errMsg = "자동차 이름은 5자 이하로 입력해야 합니다.";
 	private Scanner sc = null;
 	private String carNames = "";
 	private String[] carNameArr = null;
@@ -23,7 +21,7 @@ public class CarNameReceiver {
 	 */
 	public String[] readCarNames() {
 		sc = new Scanner(System.in);
-		System.out.println(msg);
+		System.out.println(Msgs.CarNameReceive.getMsg());
 		carNames = sc.nextLine();
 
 		return namesToArr(carNames);
@@ -51,7 +49,7 @@ public class CarNameReceiver {
 	public void checkValid(String[] carNameArr) {
 		for (String carName : carNameArr) {
 			if ((carName.length() > 5) || carName.equals("")) {
-				System.out.println(errMsg);
+				System.out.println(Msgs.CarNameLengthErr.getMsg());
 				readCarNames();
 			}
 		}
