@@ -1,5 +1,11 @@
 package domain;
 
+/**
+ * 유효성 검사를 목적으로 하는 클래스
+ * 
+ * @author wschoi8640
+ * @version 1.0
+ */
 public class ValidChecker {
 	
 	/**

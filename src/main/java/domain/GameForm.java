@@ -10,9 +10,9 @@ import java.util.ArrayList;
  */
 public class GameForm {
 
-	private int trialNum = 0;
+	private int totalTrial = 0;
 	private int curTrial = 0;
-	private GamePlay gamePlay = new GamePlay();
+	private GamePlayer gamePlay = new GamePlayer();
 	private GameResult gameResult = new GameResult();
 	private ArrayList<Car> carList = null;
 
@@ -22,7 +22,7 @@ public class GameForm {
 	 * @param gameSetting 정보
 	 */
 	public GameForm(String[] gameSetting) {
-		trialNum = Integer.parseInt(gameSetting[gameSetting.length - 1]);
+		totalTrial = Integer.parseInt(gameSetting[gameSetting.length - 1]);
 		gamePlay.setGameSetting(gameSetting);
 
 		initGame();
@@ -34,7 +34,7 @@ public class GameForm {
 	 * 정해진 횟수만큼 진행을 반복
 	 */
 	public void initGame() {
-		while (curTrial < trialNum) {
+		while (curTrial < totalTrial) {
 			gamePlay.race();
 			curTrial = curTrial + 1;
 		}

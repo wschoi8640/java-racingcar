@@ -2,17 +2,17 @@ package domain;
 
 import java.util.ArrayList;
 
+import org.apache.commons.lang3.StringUtils;
 /**
  * 게임 진행 및 진행 상황 출력하는 클래스
  * 
  * @author wschoi8640
  * @version 1.1
  */
-public class GamePlay {
+public class GamePlayer {
 
 	private ArrayList<Car> carList = new ArrayList<>();
-	private int carNum = 0;
-	private int trialNum = 0;
+	private int curTrial = 0;
 
 	/**
 	 * 게임 설정을 가져와 게임에 적용하는 메소드
@@ -21,7 +21,6 @@ public class GamePlay {
 	 * @param gameSetting 정보
 	 */
 	public void setGameSetting(String[] gameSetting) {
-		carNum = gameSetting.length - 1;
 		for (int i = 0; i < gameSetting.length - 1; i++) {
 			carList.add(new Car(gameSetting[i]));
 		}
@@ -32,15 +31,14 @@ public class GamePlay {
 	 * 생성해놓은 자동차 객체의 위치를 변경
 	 */
 	public void race() {
-		for (int i = 0; i < carNum; i++) {
+		for (Car curCar : carList) {
 			int key = (int) (Math.random() * 9);
 			if (key > 3) {
-				Car curCar = carList.get(i);
 				curCar.move();
 			}
 		}
 		printResult(carList);
-		trialNum = trialNum + 1;
+		curTrial = curTrial + 1;
 	}
 
 	/**
@@ -51,17 +49,12 @@ public class GamePlay {
 	 */
 	private void printResult(ArrayList<Car> carList) {
 		System.out.println();
-		if (trialNum == 0)
+		if (curTrial == 0)
 			System.out.println("실행 결과");
-		for (int i = 0; i < carList.size(); i++) {
-			Car curCar = carList.get(i);
+		for (Car curCar : carList) {
 			System.out.print(curCar.getName() + " : ");
-			for (int j = 0; j < curCar.getPosition(); j++) {
-				System.out.print("-");
-			}
-			System.out.println();
+			System.out.println(StringUtils.repeat("-", curCar.getPosition()));
 		}
-		System.out.println();
 	}
 
 	public ArrayList<Car> getCarList() {
