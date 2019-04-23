@@ -50,10 +50,10 @@ public class GamePlayer {
 	private void printResult(ArrayList<Car> carList) {
 		System.out.println();
 		if (curTrial == 0)
-			System.out.println("실행 결과");
+			Printer.print(Msgs.ShowGameResult.getMsg());
 		for (Car curCar : carList) {
-			System.out.print(curCar.getName() + " : ");
-			System.out.println(StringUtils.repeat("-", curCar.getPosition()));
+			Printer.print(curCar.getName() + " : ");
+			Printer.print(StringUtils.repeat("-", curCar.getPosition()));
 		}
 	}
 

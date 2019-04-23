@@ -1,7 +1,7 @@
 package domain;
 
 public class Printer {
-	void print(String msg){
-		
+	static void print(String msg){
+		System.out.println(msg);
 	}
 }
