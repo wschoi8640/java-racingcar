@@ -14,6 +14,8 @@ public class ValidChecker {
 			if ((carName.length() > 5) || carName.equals("")) {
 				fixAndPrint(Msgs.CarNameLengthErr.getMsg());
 				isValid = false;
+				System.out.println(carName);
+				return isValid;
 			}
 		}
 		return isValid;
@@ -31,6 +33,7 @@ public class ValidChecker {
 		if(carNameArr.length < 2) {
 			fixAndPrint(Msgs.NotEnoughCarErr.getMsg());
 			isValid = false;
+			return isValid;
 		}
 		return isValid;
 	}

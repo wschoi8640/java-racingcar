@@ -35,24 +35,23 @@ public class CarNameReceiver {
 	 */
 	public String[] namesToArr(String carNames) {
 		carNameArr = carNames.split(",");
-		checkValid(carNameArr);
-		
+		carNameArr = closeEmptySpace(carNameArr);
+		if(!ValidChecker.isValidCarName(carNameArr) || !ValidChecker.isValidCarNum(carNameArr)) {
+			readCarNames();
+		}
 		return carNameArr;
 	}
 
 	/**
-	 * 차 이름의 유효성을 확인하는 메소드
-	 * 유효성 위반시 입력메소드 호출
+	 * 띄어쓰기 지워주는 메소드
 	 * 
-	 * @param 차 이름 배열
+	 * @param nameArr
+	 * @return nameArr
 	 */
-	public void checkValid(String[] carNameArr) {
-		for (String carName : carNameArr) {
-			if ((carName.length() > 5) || carName.equals("")) {
-				System.out.println(Msgs.CarNameLengthErr.getMsg());
-				readCarNames();
-			}
+	private String[] closeEmptySpace(String[] nameArr) {
+		for(int i = 0; i < nameArr.length; i++) {
+			nameArr[i] = nameArr[i].replaceAll(" ", "");
 		}
+		return nameArr;
 	}
-
 }
