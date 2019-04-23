@@ -8,11 +8,10 @@ import java.util.ArrayList;
  * @author wschoi8640
  * @version 1.1
  */
-public class GameResult {
+public class ResultProcessor {
 
-	private static final String msg = "가 최종 우승했습니다.";
-	private int maxPos = 0;
 	private int maxCnt = 0;
+	private int maxPos = 0;
 	private int curPos = 0;
 	private String curName = "";
 
@@ -25,20 +24,19 @@ public class GameResult {
 	public void showResult(ArrayList<Car> carList) {
 		maxPos = getMax(carList);
 
-		for (int i = 0; i < carList.size(); i++) {
-			Car curCar = carList.get(i);
+		for (Car curCar : carList) {
 			curPos = curCar.getPosition();
 			curName = curCar.getName();
 			if ((curPos == maxPos) && (maxCnt == 0)) {
-				System.out.print(curName);
+				Printer.print(curName);
 				maxCnt = maxCnt + 1;
 
 			} else if ((curPos == maxPos) && (maxCnt != 0)) {
-				System.out.print(", " + curName);
+				Printer.print(", " + curName);
 				maxCnt = maxCnt + 1;
 			}
 		}
-		System.out.println(msg);
+		Printer.println(Msgs.ShowFinalResult.getMsg());
 	}
 
 	/**
@@ -49,8 +47,7 @@ public class GameResult {
 	 * @return 가장 먼 거리
 	 */
 	private int getMax(ArrayList<Car> carList) {
-		for (int i = 0; i < carList.size(); i++) {
-			Car curCar = carList.get(i);
+		for (Car curCar : carList) {
 			curPos = curCar.getPosition();
 			if (curPos > maxPos)
 				maxPos = curPos;

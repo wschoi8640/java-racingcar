@@ -13,7 +13,7 @@ public class GameForm {
 	private int totalTrial = 0;
 	private int curTrial = 0;
 	private GamePlayer gamePlay = new GamePlayer();
-	private GameResult gameResult = new GameResult();
+	private ResultProcessor resultProcesser = new ResultProcessor();
 	private ArrayList<Car> carList = null;
 
 	/**
@@ -45,6 +45,6 @@ public class GameForm {
 	 */
 	public void endGame() {
 		carList = gamePlay.getCarList();
-		gameResult.showResult(carList);
+		resultProcesser.showResult(carList);
 	}
 }
