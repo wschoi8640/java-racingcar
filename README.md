@@ -37,3 +37,10 @@
 #### 4. 프로그램 실행 예시
 
 ![result](./images/result.png)
+
+---
+### 5. 프로그램 진행 순서
+
+- Main.java
+- SettingForm.java -> CarNameReceiver.java -> TrialNumReceiver.java
+- GameForm.java -> GamePlayer.java -> ResultProcessor.java
