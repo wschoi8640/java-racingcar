@@ -4,7 +4,7 @@ package domain;
  * 유효성 검사를 목적으로 하는 클래스
  * 
  * @author wschoi8640
- * @version 1.0
+ * @version 1.2
  */
 public class ValidChecker {
 	
@@ -37,6 +37,15 @@ public class ValidChecker {
 		boolean isValid = true;
 		if(carNameArr.length < 2) {
 			Printer.println(Msgs.NotEnoughCarErr.getMsg());
+			isValid = false;
+			return isValid;
+		}
+		return isValid;
+	}
+	
+	public static boolean isValidTrialNum(int trialNum) {
+		boolean isValid = true;
+		if (trialNum <= 0) {
 			isValid = false;
 			return isValid;
 		}
